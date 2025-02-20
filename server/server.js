@@ -12,6 +12,7 @@ dbConnect()
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cors({ origin: 'http://localhost:5173' }))
 
 // Routes
 const booksRoute = require("./routes/book.route.js");
