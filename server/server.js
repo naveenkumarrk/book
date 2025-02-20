@@ -12,8 +12,23 @@ dbConnect()
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cors({ origin: 'http://localhost:5173' }))
 
+const allowedOrigins = [
+    'http://localhost:5173',
+    'https://book-umkz.vercel.app',
+    'https://book-umkz-naveen-kumar-rks-projects.vercel.app'
+  ];
+  
+  app.use(cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    }
+  }));
+  
 // Routes
 const booksRoute = require("./routes/book.route.js");
 const recommendationRoutes = require("./routes/recommendation.route.js");
