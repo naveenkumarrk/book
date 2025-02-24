@@ -1,5 +1,6 @@
 import React from "react";
 import { X } from "lucide-react";
+import toast, { Toaster } from "react-hot-toast";
 
 const Genre = ({ genres, filterGenre, setFilterGenre, setPage }) => {
   const handleSelectChange = (event) => {
@@ -7,8 +8,12 @@ const Genre = ({ genres, filterGenre, setFilterGenre, setPage }) => {
     
     if (selectedValue === "") {
       setFilterGenre([]);
-    } else if (!filterGenre.includes(selectedValue)) {
+    } 
+    else if (!filterGenre.includes(selectedValue)) {
       setFilterGenre([...filterGenre, selectedValue]);
+      // const genresSelected = filterGenre.filter(f => f !== "" && f !== null);
+      toast.success(`${selectedValue} Selected`);
+
     }
     setPage(1);
     event.target.value = ""; 
@@ -16,6 +21,9 @@ const Genre = ({ genres, filterGenre, setFilterGenre, setPage }) => {
 
   const removeGenre = (genreToRemove) => {
     setFilterGenre(filterGenre.filter(genre => genre !== genreToRemove));
+    toast(`${genreToRemove} is removed`, {
+      icon: '🚮',
+    });
     setPage(1);
   };
 

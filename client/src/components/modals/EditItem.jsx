@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import toast, { Toaster } from "react-hot-toast";
 import { X } from 'lucide-react';
 import axios from 'axios';
 
@@ -57,11 +58,13 @@ const EditItem = ({ objId, onClose, setUpdate }) => {
         rating: Number(rating)
       });
       setUpdate(true)
+      toast.success('Successfully Edited!')
       onClose();
     } catch (err) {
       setError(err.response?.data?.message || "Failed to update book");
     } finally {
       setIsSubmitting(false);
+
     }
   };
 

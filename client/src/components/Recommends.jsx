@@ -2,6 +2,7 @@ import axios from "axios";
 import { SquareDashedMousePointer } from "lucide-react";
 import React, { useState, useEffect } from "react";
 
+
 const base_url = import.meta.env.VITE_RECOMMEND_API_URL;
 
 const Recommends = () => {
@@ -21,6 +22,7 @@ const Recommends = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    
     setError("");
     
     try {
@@ -32,6 +34,7 @@ const Recommends = () => {
       setError("No recommendations present.");
     } finally {
       setLoading(false);
+
     }
   };
 
