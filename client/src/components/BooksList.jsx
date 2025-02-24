@@ -8,6 +8,7 @@ import EditItem from "./modals/EditItem";
 import DeleteItem from "./modals/DeleteItem";
 import AddItem from "./modals/AddItem";
 import ViewItem from './modals/ViewItem';
+import toast, { Toaster } from "react-hot-toast";
 import Table from "./Table/Table";
 
 const base_url = import.meta.env.VITE_API_URL;
@@ -19,7 +20,9 @@ const BooksList = () => {
   const [filterGenre, setFilterGenre] = useState([]);
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
-  const [update, setUpdate] = useState(false)
+  const [update, setUpdate] = useState(false);
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState("")
 
   const [showAddForm, setShowAddForm] = useState(false);
   const [viewItem, setViewItem] = useState(false);
@@ -45,12 +48,16 @@ const BooksList = () => {
           sort.order
         }&genre=${filterGenre.toString()}&search=${search}`;
         const { data } = await axios.get(url);
+        setLoading(true)
         setObj(data);
         console.log(data);
       } catch (error) {
         console.log(error);
+        setError("Failed to fetch books. Please try again.");
+        toast.error("Failed to load books!");
       }finally{
         setUpdate(false)
+        setLoading(false)
       }
     };
 
@@ -62,7 +69,11 @@ const BooksList = () => {
     { key: "title", label: "Title" },
   ];
   return (
+    <>
+    <Toaster/>
     <div className="w-full relative">
+      {loading && <p>Loading recommendations...</p>}
+      {error && <p className="text-red-500">{error}</p>}
       <div className="h-[65rem] bg-[#f1f3f4] m-2 rounded-[20px] p-4 sm:p-10">
         <div className="h-15 flex b-0 items-center gap-5">
           <h1 className="font-bold text-4xl mb-4">Books Collections</h1>
@@ -124,6 +135,7 @@ const BooksList = () => {
         </div>
       )}
     </div>
+    </>
   );
 };
 

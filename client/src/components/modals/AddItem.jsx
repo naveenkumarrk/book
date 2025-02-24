@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { X } from 'lucide-react';
 import axios from 'axios';
+import toast, { Toaster } from 'react-hot-toast';
+
 
 const AddItem = ({ onAdd, onClose }) => {
   const [title, setTitle] = useState("");
@@ -51,6 +53,7 @@ const AddItem = ({ onAdd, onClose }) => {
       if (response.data) {
         onAdd?.(response.data);
         onClose();
+        toast.success('Successfully toasted!')
       }
     } catch (err) {
       setError(err.response?.data?.message || "Failed to add book. Please try again.");
@@ -60,6 +63,8 @@ const AddItem = ({ onAdd, onClose }) => {
   };
 
   return (
+<>
+    <Toaster/>
     <form onSubmit={handleSubmit} className="p-6 max-w-2xl mx-auto">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-bold font-mono">Add New Book</h2>
@@ -145,6 +150,7 @@ const AddItem = ({ onAdd, onClose }) => {
         </button>
       </div>
     </form>
+    </>
   );
 };
 

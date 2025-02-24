@@ -11,17 +11,25 @@ const Recommends = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+
+  useEffect(() => {
+    setTimeout(() => {
+      setRecommendations([])
+    }, (1000));
+  }, [genres, author])
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError("");
     
     try {
-      const { data } = await axios.post(`${base_url}`, { genre: genres, author });
+      const { data } = await axios.post(`${base_url}`, { genre: genres, author:author });
       setRecommendations(data);
+      console.log(recommendations)
     } catch (error) {
       console.error("Error fetching recommendations:", error);
-      setError("Failed to fetch recommendations. Please try again.");
+      setError("No recommendations present.");
     } finally {
       setLoading(false);
     }
@@ -29,7 +37,7 @@ const Recommends = () => {
 
   return (
     <div className="p-10">
-      <div className="grid grid-cols-2 gap-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
         <div className="bg-white rounded-[20px] h-[57vh] shadow-lg border border-gray-200 px-5 pb-5 overflow-y-auto pt-10">
           <form onSubmit={handleSubmit}>
             <label htmlFor="author">Enter the Author Name</label>

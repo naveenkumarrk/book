@@ -1,6 +1,8 @@
 import React, {  useEffect, useState } from 'react';
 import { X } from 'lucide-react';
 import  axios  from 'axios';
+import toast, { Toaster } from "react-hot-toast";
+
 
 const base_url = import.meta.env.VITE_API_URL;
 
@@ -29,6 +31,7 @@ const DeleteItem = ({ onClose, objId, setUpdate}) => {
         await axios.delete(`${base_url}/${objId}`);
         setUpdate(true)
         onClose();
+        toast.success("Successfully deleted")
         
       } catch (err) {
         setError("Failed to delete book");
@@ -39,6 +42,8 @@ const DeleteItem = ({ onClose, objId, setUpdate}) => {
     if (!book && !error) return <div className="text-center">Loading...</div>;
   
     return (
+      <>
+      <Toaster/>
       <div className="w-[30rem]">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-2xl font-bold font-mono">Delete Book</h2>
@@ -78,6 +83,7 @@ const DeleteItem = ({ onClose, objId, setUpdate}) => {
           </div>
         </div>
       </div>
+      </>
     );
   };
 
