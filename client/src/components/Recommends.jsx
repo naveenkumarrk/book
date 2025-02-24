@@ -37,7 +37,7 @@ const Recommends = () => {
 
   return (
     <div className="p-10">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-10">
         <div className="bg-white rounded-[20px] h-[57vh] shadow-lg border border-gray-200 px-5 pb-5 overflow-y-auto pt-10">
           <form onSubmit={handleSubmit}>
             <label htmlFor="author">Enter the Author Name</label>
