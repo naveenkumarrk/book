@@ -43,12 +43,7 @@ const BooksList = () => {
 
   useEffect(() => {
     let timeout;
-    const booksDebounce = () => {
-      clearTimeout(timeout)
-      const timeout = setTimeout(() => {
-        getAllBooks()
-      }, 500);
-    }
+   
     const getAllBooks = async () => {
       try {
         const url = `${base_url}?page=${page}&sort=${sort.sort},${
@@ -68,7 +63,11 @@ const BooksList = () => {
       }
     };
 
-    booksDebounce();
+    timeout = setTimeout(() => {
+      getAllBooks();
+    }, 500);
+    return () => clearTimeout(timeout);
+
   }, [sort, filterGenre, page, search, update]);
 
   const sortOptions = [
