@@ -42,7 +42,7 @@ const BooksList = () => {
   console.log(import.meta.env.VITE_API_URL);
 
   useEffect(() => {
-    let timeout;
+    // let timeout;
    
     const getAllBooks = async () => {
       try {
@@ -62,11 +62,11 @@ const BooksList = () => {
         setLoading(false)
       }
     };
-
-    timeout = setTimeout(() => {
-      getAllBooks();
-    }, 500);
-    return () => clearTimeout(timeout);
+  getAllBooks()
+    // timeout = setTimeout(() => {
+    //   getAllBooks();
+    // }, 500);
+    // return () => clearTimeout(timeout);
 
   }, [sort, filterGenre, page, search, update]);
 
