@@ -42,6 +42,12 @@ const BooksList = () => {
   console.log(import.meta.env.VITE_API_URL);
 
   useEffect(() => {
+
+    const booksDebounce = () => {
+      setTimeout(() => {
+        getAllBooks()
+      }, 1000);
+    }
     const getAllBooks = async () => {
       try {
         const url = `${base_url}?page=${page}&sort=${sort.sort},${
@@ -61,7 +67,7 @@ const BooksList = () => {
       }
     };
 
-    getAllBooks();
+    booksDebounce();
   }, [sort, filterGenre, page, search, update]);
 
   const sortOptions = [
