@@ -3,6 +3,7 @@ import { X } from 'lucide-react';
 import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
 
+const base_url = import.meta.env.VITE_API_URL;
 
 const AddItem = ({ onAdd, onClose }) => {
   const [title, setTitle] = useState("");
@@ -41,7 +42,7 @@ const AddItem = ({ onAdd, onClose }) => {
 
     try {
       setIsSubmitting(true);
-      const response = await axios.post('http://localhost:3000/books', {
+      const response = await axios.post(`${base_url}`, {
         title,
         author,
         genres: genres.split(',').map(g => g.trim()), 
