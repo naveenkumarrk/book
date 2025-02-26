@@ -44,9 +44,10 @@ const BooksList = () => {
   useEffect(() => {
 
     const booksDebounce = () => {
-      setTimeout(() => {
+      clearTimeout(timeout)
+      const timeout = setTimeout(() => {
         getAllBooks()
-      }, 1000);
+      }, 500);
     }
     const getAllBooks = async () => {
       try {
