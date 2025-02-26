@@ -24,7 +24,7 @@ const SortDropdown = ({ sort, setSort }) => {
           value={sort.sort}
           className="mr-2 p-3 border-2 border-gray-400 rounded-xl w-44 font-semibold text-gray-700"
         >
-          <option value="year">Year</option>
+          <option value="publishedYear">Year</option>
           <option value="rating">Rating</option>
         </select>
         
