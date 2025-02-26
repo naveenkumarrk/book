@@ -18,16 +18,16 @@ const Table = ({ totals, books, setShowAddForm, setViewItem, setObjId, setEditIt
     <>
       <div className="h-15 flex items-center my-2">
         <h1 className="text-lg w-full font-semibold font-mono">
-          Books Available : {totals}
+          Books : {totals}
         </h1>
         <div className="w-full flex justify-end mr-5">
           <button
             onClick={() => setShowAddForm(true)}
-            className="p-2 w-[11rem] border-2 font-mono border-gray-400 rounded-xl flex items-center justify-between 
+            className="p-2 w-[9rem] sm:w-[11rem] md:w-[11rem] border-2 font-mono border-gray-400 rounded-xl flex items-center justify-between 
         bg-white shadow-lg hover:bg-black hover:text-white hover:border-black transition-colors duration-200 
         text-gray-700 font-medium cursor-pointer"
           >
-            <Plus className="mr-2" /> Add Product
+            <Plus className="mr-2" /> Add
           </button>
         </div>
       </div>

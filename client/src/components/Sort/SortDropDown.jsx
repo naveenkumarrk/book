@@ -22,7 +22,7 @@ const SortDropdown = ({ sort, setSort }) => {
         <select
           onChange={handleSortChange}
           value={sort.sort}
-          className="mr-2 p-3 border-2 border-gray-400 rounded-xl w-44 font-semibold text-gray-700"
+          className="mr-2 p-3 border-2 border-gray-400 rounded-xl w-44 sm:w-30 md:w-30 font-semibold text-gray-700"
         >
           <option value="publishedYear">Year</option>
           <option value="rating">Rating</option>
