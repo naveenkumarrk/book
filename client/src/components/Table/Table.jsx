@@ -27,7 +27,7 @@ const Table = ({ totals, books, setShowAddForm, setViewItem, setObjId, setEditIt
         bg-white shadow-lg hover:bg-black hover:text-white hover:border-black transition-colors duration-200 
         text-gray-700 font-medium cursor-pointer"
           >
-            <Plus className="mr-2" /> Add
+            <Plus className="mr-2" /> Add Book
           </button>
         </div>
       </div>
