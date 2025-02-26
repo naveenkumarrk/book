@@ -42,7 +42,7 @@ const AddItem = ({ onAdd, onClose }) => {
 
     try {
       setIsSubmitting(true);
-      const response = await axios.post(`${base_url}`, {
+      const response = await axios.post(`${base_url}/`, {
         title,
         author,
         genres: genres.split(',').map(g => g.trim()), 
@@ -135,6 +135,7 @@ const AddItem = ({ onAdd, onClose }) => {
             onChange={(e) => setRating(e.target.value)}
             className="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none"
           />
+
         </div>
 
         <button 
