@@ -12,10 +12,10 @@ const getRecommendations = async (req, res) => {
 
     let matchQuery = {};
     if (genre && genre.trim() !== "") {
-      matchQuery.genres = { $regex: genre, $options: "i" };
+      matchQuery.genres = { $regex: genre.trim(), $options: "i" };
     }
     if (author && author.trim() !== "") {
-      matchQuery.author = { $regex: author, $options: "i" };
+      matchQuery.author = { $regex: author.trim(), $options: "i" };
     }
 
     const recommendations = await Book.aggregate([
