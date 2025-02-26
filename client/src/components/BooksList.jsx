@@ -42,7 +42,7 @@ const BooksList = () => {
   console.log(import.meta.env.VITE_API_URL);
 
   useEffect(() => {
-
+    let timeout;
     const booksDebounce = () => {
       clearTimeout(timeout)
       const timeout = setTimeout(() => {
